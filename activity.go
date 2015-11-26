@@ -34,6 +34,7 @@ func (a Counter) Hz() float64 {
 	return a.Value * float64(time.Second) / float64(a.Tau)
 }
 
+// String produces a nicely readable presentation.
 func (a Counter) String() string {
 	if a.Value == 0 {
 		return "\u221E (0 Hz)"
@@ -63,7 +64,7 @@ func (a *Counter) TickN(ts time.Time, N int) {
 
 // NextExpected returns duration (relative to now) until the next expected event
 // given the state of a, the fact that no new event happened until
-// now, and assuming the event source is a poisson process with a mean
+// now, and assuming the event source is a Poisson process with a mean
 // interval time much smaller than our Tau.
 func (a Counter) NextExpected(now time.Time) time.Duration {
 	if a.Value <= 0 {
