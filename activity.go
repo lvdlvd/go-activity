@@ -1,7 +1,9 @@
 // Package activity provides a decaying activity counter.
 //
 // A decaying counter is appropriate to estimate the best candidate to evict
-// from, say, a cache, assuming the event stream is some poisson process.
+// from, say, a cache, assuming the event stream is some Poisson process.
+//
+// TODO redo the correction factors.
 package activity
 
 import (
@@ -15,7 +17,7 @@ import (
 //
 //   a := Counter{Tau: time.Hour}
 //
-// Good choices or Tau are larger than the inverse of the frequency
+// Good choices or Tau are larger than the period
 // with which you expect events to happen and small enough that your
 // application adapts to changing circumstances.
 // Eg. if you have an event stream of several events per second, and
