@@ -10,7 +10,7 @@ func TestThatItWorks(t *testing.T) {
 
 	ts := time.Now()
 	for i := 0; i < 1000; i++ {
-		t.Log(a.Hz(), a)
+		t.Logf("%d hz: %v  a:%q  next:%v", i, a.Hz(), a, a.NextExpected(ts))
 		a.TickN(ts, 1)
 		ts = ts.Add(time.Second)
 	}
